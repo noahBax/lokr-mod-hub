@@ -1,107 +1,121 @@
-"MinionAssassin"
-{
-	"UniqueId" "Assassin"
-	"Model" "BanditHighwayMan"
-	"MetaExo" "ExoSkeletonHumanSylvanElf_MetaDataAsset"
-	"Name" "MINION_ASSASSIN"
-	"InheritsFrom" "Hero"
-	"cinematicTags" "Heroe|Minion|Female|ct_minion|ct_athletics|ct_social|ct_perception|UPGRADES_athletic"
-	"nextLevelArchetype" "MinionAssassinLvl2"
-	"AttackType" "PHYSICAL"
-	"Icon" "Asst_Banner_Ranger"
-	"Background" "hero_roster_legend_bg_forest"
-	"UnitOnMap" "Asst_Party_SylvanElf"
-	"PortraitBackgroundColor" "cd7332"
-
-	"stats"
+	"MinionAssassin" 
 	{
-		"level" "1"
-		"health_max" "4"
-		"armor_max" "0"
-		"armor_regen_per_turn" "0"
-		"baseDamage" "4"
-		"rangedAttackRange" "2"
-		"rangedAttackMinRange" "1"
-		"evasion" "0.3"
-		"visualMoveSpeed" "4"
-		"visualRunSpeed" "4"
-		"walkSpeed" "3"
-	}
+		"UniqueId" "Assassin"
+		"Model" "BanditHighwayMan"
+		"MetaExo" "ExoSkeletonHumanSylvanElf_MetaDataAsset"
+		"Name" "MINION_ASSASSIN"
+		"InheritsFrom" "Hero"
+		"cinematicTags" "Heroe|Minion|Female|ct_minion|ct_athletics|ct_social|ct_perception|UPGRADES_athletic"
+		"nextLevelArchetype" "MinionAssassinLvl2"
+		"AttackType" "PHYSICAL"
+		"Icon" "Asst_Banner_Ranger"
+		"Background" "hero_roster_legend_bg_forest"
+		"UnitOnMap" "Asst_Party_SylvanElf"
+		"PortraitBackgroundColor" "cd7332"
 
-	"skills"
-	{
-		"100" "agility_trait"
-		"101" "dodge_trait"
-		"102" "athletics_endturn_trait"
-	}
-
-	"skillProgression"
-	{
-		"1"
+		"stats"
 		{
-			"1" "assassin_stealth"
+			"level" "1"
+
+			"health_max" "4"
+			"armor_max" "0"
+			"armor_regen_per_turn" "0"
+
+			"baseDamage"  "5"
+
+			"rangedAttackRange" "2"
+			"rangedAttackMinRange" "1"
+			"evasion" "0.4"
+			
+			"visualMoveSpeed" "4" 
+			"visualRunSpeed" "4"
+			"walkSpeed" "3"
 		}
 
-		"2"
+		"skills"
 		{
-			"1" "assassin_counterattack"
-			"2" "assassin_dagger"
-		}
+			"100" 		"agility_trait"
+			"101"     	"dodge_trait"
+			
+			"102" 		"athletics_endturn_trait"
+ 		}
 
-		"3"
+		"skillProgression"
+ 		{
+ 			"1" 
+ 			{
+ 				"1" "assassin_stealth"
+ 			}
+
+ 			"2" 
+ 			{
+ 				"1" "assassin_counterattack"
+ 				"2" "assassin_dagger"
+ 			}
+
+ 			"3"
+ 			{
+ 				"1" "assassin_backstab"
+ 				"2" "assassin_quickstep"
+ 			}
+ 		}
+
+ 		"defaultSkill" "assassin_lethal_strike"
+
+ 		"soundConfig"
 		{
-			"1" "assassin_backstab"
-			"2" "assassin_quickstep"
+			"assetId" "DynamicSoundGroupGeraldSounds"
+			"sounds"
+			{
+				"receiveDamage" 		"krl_sfx_combatGeneric_humanFemaleHit"
+				"receiveArmorDamage" 	"krl_sfx_combatGeneric_armorHit"
+				"death" 				"krl_sfx_combatGeneric_humanFemaleDeath"
+				"useSkill" 				"krl_va_combatGerald_action"
+				"startTurn" 			"krl_va_combatGerald_turnStart"
+				"promote" 				"krl_va_combatGerald_promote"
+				"selectHero" 			"krl_va_combatGerald_select"
+			}
 		}
 	}
 
-	"defaultSkill" "assassin_lethal_strike"
 
-	"soundConfig"
+	"MinionAssassinLvl2" 
 	{
-		"assetId" "DynamicSoundGroupGeraldSounds"
-		"sounds"
+		"InheritsFrom" "MinionAssassin"
+		"nextLevelArchetype" "MinionAssassinLvl3"
+
+		"stats"
 		{
-			"receiveDamage" "krl_sfx_combatGeneric_humanFemaleHit"
-			"receiveArmorDamage" "krl_sfx_combatGeneric_armorHit"
-			"death" "krl_sfx_combatGeneric_humanFemaleDeath"
-			"useSkill" "krl_va_combatGerald_action"
-			"startTurn" "krl_va_combatGerald_turnStart"
-			"promote" "krl_va_combatGerald_promote"
-			"selectHero" "krl_va_combatGerald_select"
+			"level" "2"
+
+			"health_max" "6"
+			"armor_max" "0"
+			"armor_regen_per_turn" "2"
+
+			"baseDamage"  "6"
+			
+			"evasion" "0.4"
+
+			"walkSpeed" "3"
 		}
 	}
-}
 
-"MinionAssassinLvl2"
-{
-	"InheritsFrom" "MinionAssassin"
-	"nextLevelArchetype" "MinionAssassinLvl3"
-
-	"stats"
+	"MinionAssassinLvl3" 
 	{
-		"level" "2"
-		"health_max" "5"
-		"armor_max" "0"
-		"armor_regen_per_turn" "2"
-		"baseDamage" "5"
-		"evasion" "0.4"
-		"walkSpeed" "3"
-	}
-}
+		"InheritsFrom" "MinionAssassin"
 
-"MinionAssassinLvl3"
-{
-	"InheritsFrom" "MinionAssassin"
+		"stats"
+		{
+			"level" "3"
 
-	"stats"
-	{
-		"level" "3"
-		"health_max" "6"
-		"armor_max" "0"
-		"armor_regen_per_turn" "2"
-		"baseDamage" "6"
-		"evasion" "0.5"
-		"walkSpeed" "3"
+			"health_max" "8"
+			"armor_max" "0"
+			"armor_regen_per_turn" "2"
+
+			"baseDamage"  "7"
+			
+			"evasion" "0.4"
+			
+			"walkSpeed" "4"
+		}
 	}
-}

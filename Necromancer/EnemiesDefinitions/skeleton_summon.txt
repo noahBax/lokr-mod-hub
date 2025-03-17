@@ -9,7 +9,7 @@
 
 			"level" "1"
 				
-			"health_max" "10"
+			"health_max" "3"
 			"armor_max" "0"		
 			
 			

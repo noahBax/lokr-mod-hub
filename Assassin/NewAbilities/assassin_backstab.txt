@@ -4,7 +4,7 @@
     "AbilityTeamFilter"         "TEAM_ENEMY"
     
     "AbilityCastRange"          "20"
-    "AbilityCooldown"           "2"
+    "AbilityCooldown"           "4"
     "AbilityAPCost"             "2"
     "AnimationID"               "Attack"
     "CastFXId"                  "ShadowStrikeCastFXMega"
@@ -17,6 +17,16 @@
         {
             "var_type"              "FIELD_EXPRESSION"
             "damage"                "stat(%CASTER, #attackDamage)"
+        }
+        "02"
+        {
+            "var_type"      "FIELD_FLOAT"
+            "dodgeChance"      "70"
+        }
+        "03"
+        {
+            "var_type"      "FIELD_FLOAT"
+            "duration"      "1"
         }
     }
 
@@ -84,28 +94,34 @@
                     "Condition" "equal(%INSTIGATOR, %TARGET) && matchesGroup(unitGroup(%DEAD), @UnitGroup(BadSide)) && not(isOnState(%DEAD, #NO_SKULL)) && not(isOnState(%DEAD, #IS_CINEMATIC))"
                     "Actions"
                     {
+                       "ApplyModifier"
+                        {
+                            "ModifierName"      "assassin_dodge_increase_modifier"
+                            "Target"            "%TARGET"
+                            "Duration"          "%duration"
+                            "Refresh"           "1"
+                        }
+
                        "HitLegendaryTriggered"
 						{
 							"Unit"              "%SOURCE"
 						}
-						"ApplyModifier"
-						{
-							"ModifierName"  "arcane_replenish_trait_status_modifier"
-							"Target"        "%SOURCE"
-							"Duration"      "1" 
-							"Refresh"       "1" 
-						}
+						
                     }
 					
                 }
             }
         }
-		
-		"arcane_replenish_trait_status_modifier"
+        "assassin_dodge_increase_modifier"
         {
+            "Tags"              "shield"
+            "EffectName"        "AsraSpiderStanceStatusFXMega"
+            "Icon"              "SpiderStance"
+            "IconPriority"      "50"
+
             "PropertiesAdd"
             {
-                "cooldownOffset" "-999"
+                "evasion"       "(%dodgeChance)/100"
             }
         }
     }
