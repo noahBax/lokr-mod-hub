@@ -1,0 +1,148 @@
+"rb_darkknight_impervious"
+{
+    
+    
+    "AbilityBehavior"       "UNIT_TARGET"
+    "AbilityTeamFilter"     "TEAM_FRIENDLY"
+
+    "AnimationID"           "SpellCastB"
+    "CastFXId"              "DarkKnightImperviouslCastFXMega"
+    "Icon"                  "ShieldWall"
+
+    "AbilityCastRange"      "0"
+    "AbilityCooldown"       "3"
+    "AbilityAPCost"         "1"
+
+     "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"      "FIELD_FLOAT"
+            "armorBonus"    "20"
+        }
+
+        "02"
+        {
+            "var_type"      "FIELD_FLOAT"
+            
+            "duration"      "1"
+        }
+    }
+
+
+    "OnAbilityAction"
+    {
+        "RemoveModifier"
+        {
+            "ModifierTag"       "dot"
+            "Target"            "%TARGET"
+        }
+
+        "ApplyModifier"
+        {
+            "ModifierName"      "impervious_modifier"
+            "Target"            "%TARGET"
+            "Duration"          "%duration"
+        }
+
+        "GiveArmor"
+        {
+            "Target"            "%TARGET"
+            "ArmorAmount"       "1000"
+        }
+    }
+
+    "Modifiers"
+    {
+        "impervious_modifier"
+        {
+
+            "AnimationOverride"      "Victory"
+            "EffectName"             "DarkKnightImperviousStatusFXMega"
+
+            "States"
+            {
+                "CANT_BE_KNOCKED_BACK"  "1"
+                "CANT_BE_BURNT"         "1"
+                "CANT_BE_POISONED"      "1"
+                "CANT_BE_BLED"          "1"
+                "STUNNED"               "1"
+            }
+
+            "OnHitPreProcessDamages"
+                {
+                    "Conditional"
+                    {
+                        "Condition" "not(hasTags(hitTags(%HIT), #GLARE_SUPER_RAY))"
+
+                        "Actions"
+                        {
+                            "Conditional"
+                            {
+                                "Condition" "max(0, hitDamageOfType(%HIT, @DamageType(DAMAGE_TRUE)), hitDamageOfType(%HIT, @DamageType(DAMAGE_MAGICAL)), hitDamageOfType(%HIT, @DamageType(DAMAGE_PHYSICAL))) > 0"
+
+                                "Actions"
+                                {
+                                    "AddDamage"
+                                    {
+                                        "Type"            "DAMAGE_TRUE"
+                                        "Damage"        "0 - hitDamageOfType(%HIT, @DamageType(DAMAGE_TRUE))"
+                                    } 
+
+                                    "AddDamage"
+                                    {
+                                        "Type"            "DAMAGE_PHYSICAL"
+                                        "Damage"        "0 - hitDamageOfType(%HIT, @DamageType(DAMAGE_PHYSICAL))"
+                                    } 
+
+                                    "AddDamage"
+                                    {
+                                        "Type"            "DAMAGE_MAGICAL"
+                                        "Damage"        "0 - hitDamageOfType(%HIT, @DamageType(DAMAGE_MAGICAL))"
+                                    } 
+
+                                    "#AddDamage"
+                                    {
+                                        "Type"            "DAMAGE_TRUE"
+                                        "Damage"        "1"
+                                    } 
+
+                                    "UnitRaiseMessage"
+                                    {
+                                        "Unit" "%TARGET"
+                                        
+                                        "Icon" "ShieldWall"
+                                    }
+                                }
+
+                                "ElseActions"
+                                {
+                                    "#UnitRaiseMessage"
+                                    {
+                                        "Unit" "%TARGET"
+                                        
+                                        "Icon" "ShieldWall"
+                                    }
+                                }
+                            }
+
+                            "AddDamage"
+                            {
+                                "Type"            "DAMAGE_ARMOR"
+                                "Damage"        "0 - hitDamageOfType(%HIT, @DamageType(DAMAGE_ARMOR))"
+                            } 
+                        }
+                    }
+                }
+            
+            "OnTurnStarted"
+            {
+                "RemoveModifier"
+                {
+                    "ModifierName"      "impervious_modifier"
+                    "Target"            "%TARGET"
+                }
+            }
+        }
+    }
+}
