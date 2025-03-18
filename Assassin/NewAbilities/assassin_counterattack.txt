@@ -9,7 +9,7 @@
 
     "AbilityCastRange"      "0"
     "AbilityCooldown"       "3"
-    "AbilityAPCost"         "0"
+    "AbilityAPCost"         "1"
 
      "AbilitySpecial"
     {
@@ -116,7 +116,7 @@
 		"assassin_counterattack_epic_modifier"
 		{
             "Tags"              "shield"
-            "EffectName"        "AsraSpiderStanceStatusFXMega"
+            "EffectName"        "ParryStanceFXMega"
             "Icon"              "Enraged01"
             "IconPriority"      "50"
 
