@@ -3,10 +3,10 @@
     "AbilityBehavior"       "UNIT_TARGET | FAKE_ACTION | DOESNT_CONSUME_MOVE"
     "AbilityTeamFilter"     "TEAM_ENEMY"
     "AbilityCastRange"      "stat(%CASTER, #rangedAttackRange)"
-    "AbilityCastMinRange"   "stat(%CASTER, #rangedAttackMinRange)+1"
+    "AbilityCastMinRange"   "stat(%CASTER, #rangedAttackMinRange)"
     "AbilityCooldown"       "2"
     "AbilityAPCost"         "1"
-    "AnimationID"           "SpecialAttack"
+    "AnimationID"           "Attack"
     "CastFXId"              "ArrowOfSorrowCastFXMega"
     "Icon"                  "BanditRangedAttack"
 
