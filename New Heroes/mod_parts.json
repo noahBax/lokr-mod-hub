@@ -1,0 +1,12 @@
+{
+	"parts": [
+		"Assassin",
+		"Clearic",
+		"Enchantress",
+		"Necromancer",
+		"new_heroes_lib"
+	],
+	"mandatory": [
+		"new_heroes_lib"
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"mod_list": [
+		"Chaos Mod",
+		"New Heroes",
+		"Rebalanced"
+	],
+	"mandatory": [
+		"ironhide.legends.dll",
+		"resources"
+	]
+}
