@@ -58,7 +58,7 @@
             {
                 "Conditional"
                 {
-                    "Condition"     "isOnState(%HITTARGET, #IMMOBILIZED)"
+                    "Condition"     "stat(%CASTER, #walkSpeedUsed)==0"
 
                     "Actions" 
                     {
